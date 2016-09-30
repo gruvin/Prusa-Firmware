@@ -1430,6 +1430,7 @@ void process_commands()
 
   // PRUSA GCODES
 
+
   if(code_seen('PRUSA')){
     if(code_seen('Fir')){
 
@@ -1625,7 +1626,7 @@ void process_commands()
 
 
 
-        #endif
+        #endif // #ifdef FILAMENT_RUNOUT_SUPPORT
 
 
         get_coordinates(); // For X Y Z E F
@@ -2098,7 +2099,7 @@ void process_commands()
             feedrate = homing_feedrate[Z_AXIS];
 
             run_z_probe();
-            SERIAL_PROTOCOLPGM(MSG_BED);
+            SERIAL_PROTOCOLPGM("Bed"); // obscure bug --> MSG_BED);
             SERIAL_PROTOCOLPGM(" X: ");
             SERIAL_PROTOCOL(current_position[X_AXIS]);
             SERIAL_PROTOCOLPGM(" Y: ");
